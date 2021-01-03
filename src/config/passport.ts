@@ -17,7 +17,6 @@ const cookieFromExtractor = req => {
     return token;
 }
 
-// local
 passport.use(new LocalStrategy((username: any, password: any, done: any) => {
     User.findOne({username}).exec((err: any, user: { password: any; }) => {
         if (err) return done(err);
@@ -25,7 +24,7 @@ passport.use(new LocalStrategy((username: any, password: any, done: any) => {
         if (!user) return done(null, false);
 
         bcrypt.compare(password, user.password, (err: any, isMatch: any) => {
-            if (err) {          // hashed password
+            if (err) {
                 return done(err);
             }
             if (!isMatch) {
@@ -40,7 +39,7 @@ passport.use(new LocalStrategy((username: any, password: any, done: any) => {
 passport.use(new JWTStrategy({
     jwtFromRequest: cookieFromExtractor,
     passReqToCallback: true,
-    secretOrKey: process.env.JWT_SECRET // maybe wanna use environment variables here
+    secretOrKey: process.env.JWT_SECRET
 }, (req: any, payload: any, done: any) => {
     // console.log(payload.sub)
     User.findOne({_id: payload.sub}, (err: any, user: any) => {

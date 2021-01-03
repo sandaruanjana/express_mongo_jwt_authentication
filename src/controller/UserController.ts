@@ -45,8 +45,6 @@ const deleteUser = (req: Request, res: Response) => {
 
 const getAllUsers = (req: Request, res: Response) => {
 
-    // if you use find() method it will return a Array of selected Data,// result.length>0===
-    // when you use findOne() it will return only one object/// result !=null
     try {
 
         // @ts-ignore

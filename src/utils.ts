@@ -1,23 +1,17 @@
-const jwt = require('jsonwebtoken')
+/*const jwt = require('jsonwebtoken')
 
 // @ts-ignore
 const createMessage = (msg, err) => ({ msg, err });
 
-// function createMessage(msg, err) {
-//     return {
-//         msg,
-//         err
-//     }
-// }
 
 // @ts-ignore
 const signToken = userID => {
     return jwt.sign({
-        iss: "keyboard cat",
+        iss: process.env.JWT_SECRET,
         sub: userID
-    }, "keyboard cat", { expiresIn: "1hr" });
+    }, process.env.JWT_SECRET, { expiresIn: "1hr" });
 }
 
 export default module.exports = {
     signToken
-}
+}*/
